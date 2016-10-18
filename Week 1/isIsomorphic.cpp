@@ -20,3 +20,26 @@ public:
         return check(s, t) && check(t, s);
     }
 };
+
+/*
+Questions to interviewer:
+1. Are we guaranteed to have strings of equal sizes?
+2. What is the size of alphabet?
+
+*/
+
+/*
+Test cases:
+
+""
+""
+
+"aabb"
+"tttt"
+
+*/
+
+/*
+Time complexity is O(|s|), as well as memory complexity.
+
+*/

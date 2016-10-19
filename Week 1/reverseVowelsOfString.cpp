@@ -2,7 +2,7 @@ class Solution {
     
     // check if given symbol is vowel part is hardcoded
     // we can also use some sort of set
-    // then we need to initialise it and time complexity will raise
+    // then we need to initialise it and time complexity will raise (will not grow if we'll go for hash set)
     // another possibility is to use bitvector for whole alphabet 
     // this case time complexity will stay unchanged, but memory usage will grow
     

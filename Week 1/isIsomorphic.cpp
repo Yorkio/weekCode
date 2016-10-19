@@ -40,6 +40,7 @@ Test cases:
 */
 
 /*
-Time complexity is O(|s|), as well as memory complexity.
+Time complexity is O(|s|).
+Memory complexity is O(|alphabet|).
 
 */

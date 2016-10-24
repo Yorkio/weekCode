@@ -29,10 +29,15 @@
  */
 class Solution {
     bool isDigit(char ch) {
+        // Function to check if given symbol ch can be part of integer number (e.g. 234, -32, .. ).
+
         return (ch >= '0' && ch <= '9' || ch == '-');
     }
     
     int getNext(int &pos, const string &s) {
+        // Given the position pos of first digit or sigh return integer
+        // which endes before "\n", "," or "]" in the given string s.
+
         int res = 0, mult = 1;
         if (s[pos] == '-') {
             mult = -1;
@@ -45,31 +50,50 @@ class Solution {
     }
     
     NestedInteger process(const string &s, int &pos) {
+        // This function recursively generates nested integer list.
+        // If we are at symbol "," we can just skip it.
+        // If we are at digit or "-" symbol we can get next integer and add it to current list.
+        // If we are at "[" symbol this means that next nested integer is list and we should put all
+        // next nested integers inside this till we met paired symbol "]".
+        // Base of the recursion when pos is larger than length of given string s.
+        
         if (pos >= s.length()) return NestedInteger();
+
         if (s[pos] == ',') {
             ++pos;
-            return process(s, pos);
         }
+        
         if (isDigit(s[pos])) {
             int val = getNext(pos, s);
             return (NestedInteger(val));
         }
+        
         NestedInteger root;
         ++pos;
         for ( ; pos < s.length() && s[pos] != ']'; ) {
             root.add(process(s, pos));
         } 
-        if (s[pos] == ']') ++pos;
+
+        ++pos;
         return root;
     }
     
 public:
     NestedInteger deserialize(string s) {
-        int pos = 0, len = s.length();
+        int pos = 0;
         NestedInteger res;
-        while (pos < len) {
+        while (pos < s.length()) {
             res = process(s, pos);
         }
         return res;    
     }
 };
+
+
+/*
+    Input string length = l.
+    Time complexity T=O(l) recursively visit each position of a string maximum once.
+    Memory complexity M=O(l) for recursion calls.
+    Run time = 22ms.    
+
+*/ 

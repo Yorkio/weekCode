@@ -70,7 +70,7 @@ class Solution {
         
         NestedInteger root;
         ++pos;
-        for ( ; pos < s.length() && s[pos] != ']'; ) {
+        for ( ; s[pos] != ']'; ) {
             root.add(process(s, pos));
         } 
 
